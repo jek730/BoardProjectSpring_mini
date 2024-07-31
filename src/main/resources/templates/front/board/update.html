@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{front/layouts/main}">
+
+<main layout:fragment="content">
+    <form method="POST" th:action="@{/board/save}" th:object="${requestBoard}">
+        <input type="hidden" name="seq" th:field="*{seq}">
+        <th:block th:replace="~{front/board/_form::form}"></th:block>
+        <div class="buttons">
+            <button type="reset">다시입력</button>
+            <button type="submit">수정하기</button>
+        </div>
+    </form>
+</main>
+</html>

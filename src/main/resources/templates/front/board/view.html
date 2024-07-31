@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{front/layouts/main}">
+
+<main layout:fragment="content" th:object="${data}">
+    <dl>
+        <dt>작성자</dt>
+        <dd th:text="*{poster}"></dd>
+    </dl>
+    <dl>
+        <dt>제목</dt>
+        <dd th:text="*{subject}"></dd>
+    </dl>
+    <dl>
+        <dt>내용</dt>
+        <dd th:utext="*{#strings.replace(content, '\n', '<br>')}"></dd>
+    </dl>
+    <div class="buttons">
+        <a th:href="@{/board/update/{seq}(seq=*{seq})}">수정하기</a>
+        <button type="submit">삭제하기</button>
+    </div>
+</main>
+</html>

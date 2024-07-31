@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{front/layouts/main}">
+
+<main layout:fragment="content">
+    <h1 th:text="#{게시글 목록}"></h1>
+    <ul>
+        <li th:if="${items == null || items.isEmpty()}">
+            게시글이 없습니다.
+        </li>
+        <li th:unless="${items == null || items.isEmpty()}" th:each="item : ${items}" th:object="${item}">
+            <a th:href="@{/board/view/{seq}(seq=*{seq})}">
+                제목 : <th:block th:text="*{subject}"></th:block>
+                작성자 : <th:block th:text="*{poster}"></th:block>
+            </a>
+        </li>
+    </ul>
+
+    <div class="buttons">
+        <a th:href="@{/board/write}">글쓰기</a>
+    </div>
+    </form>
+</main>
+</html>

@@ -18,7 +18,7 @@
     </dl>
     <div class="buttons">
         <a th:href="@{/board/update/{seq}(seq=*{seq})}">수정하기</a>
-        <button type="submit">삭제하기</button>
+        <a th:href="@{/board/delete/{seq}(seq=*{seq})}">삭제하기</a>
     </div>
 </main>
 </html>

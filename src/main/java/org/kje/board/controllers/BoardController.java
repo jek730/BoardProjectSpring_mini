@@ -3,6 +3,7 @@ package org.kje.board.controllers;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.kje.board.entities.Board;
+import org.kje.board.services.BoardDeleteService;
 import org.kje.board.services.BoardInfoService;
 import org.kje.board.services.BoardSaveService;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ public class BoardController {
 
     private final BoardSaveService saveService;
     private final BoardInfoService infoService;
+    private final BoardDeleteService deleteService;
 
     @GetMapping("/write")
     public String write(@ModelAttribute RequestBoard form) {
@@ -69,6 +71,8 @@ public class BoardController {
     // 게시글 삭제
     @GetMapping("/delete/{seq}")
     public String delete(@PathVariable("seq") Long seq) {
+
+        deleteService.delete(seq);
 
         return "redirect:/board/list";
     }
